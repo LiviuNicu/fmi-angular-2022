@@ -1,0 +1,21 @@
+<p>login works!</p>
+{{ user.email }}
+<!-- [class]="isDisabled ? 'btn btn-primary' : 'btn btn-danger'" -->
+<input class="form-control" placeholder="Email" [(ngModel)]="user.email" />
+<input
+  class="form-control"
+  placeholder="Password"
+  type="password"
+  [(ngModel)]="user.password"
+/>
+<button class="btn btn-success" (click)="doLogin()">Do login</button>
+
+<button
+  type="button"
+  class="btn"
+  [ngClass]="isDisabled ? 'btn-primary' : 'btn-danger'"
+  [disabled]="isDisabled"
+  [routerLink]="['/register']"
+>
+  Register
+</button>

@@ -1,0 +1,28 @@
+<p>register works!</p>
+<form [formGroup]="myForm" (ngSubmit)="doRegister()">
+  <input
+    formControlName="firstName"
+    class="form-control"
+    placeholder="First Name"
+  />
+  <input
+    formControlName="email"
+    class="form-control"
+    placeholder="Email"
+    [ngClass]="myForm.controls['email'].errors ? 'is-invalid' : ''"
+  />
+  <input
+    formControlName="password"
+    class="form-control"
+    placeholder="Password"
+    type="password"
+  />
+  <button
+    type="submit"
+    [disabled]="myForm.status === 'INVALID'"
+    class="btn btn-primary"
+  >
+    Do register
+  </button>
+</form>
+<button class="btn btn-success" (click)="goToLogin()">Login</button>
