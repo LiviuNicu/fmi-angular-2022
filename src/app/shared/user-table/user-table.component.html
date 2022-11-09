@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of allUsers; let i = index">
+      <td>{{ user.name }}</td>
+      <td>{{ user.age }}</td>
+      <td>
+        <button class="btn btn-danger" (click)="removeUser(i)">Remove</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

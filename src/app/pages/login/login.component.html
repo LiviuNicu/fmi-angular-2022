@@ -10,6 +10,9 @@
 />
 <button class="btn btn-success" (click)="doLogin()">Do login</button>
 
+<div class="alert alert-danger" *ngIf="error">{{ error }}</div>
+<div class="alert alert-danger" [hidden]="!error">{{ error }}</div>
+
 <button
   type="button"
   class="btn"

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginDTO } from 'src/app/interfaces/login-dto';
 
 @Component({
@@ -11,9 +12,10 @@ export class LoginComponent implements OnInit {
   public user: LoginDTO = {
     email: 'eeee',
     password: '',
-  }
+  };
+  public error: string | boolean = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -22,7 +24,24 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin() {
-    console.log(this.user);
+    this.error = false;
+    if (this.user.email && this.user.password) {
+      if (this.validateEmail(this.user.email)) {
+        this.router.navigate(['dashboard']);
+      } else {
+        this.error = 'invalid email';
+      }
+    } else {
+      this.error = 'email and passowrd are required';
+    }
   }
+
+  validateEmail = (email: string) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
 
 }
