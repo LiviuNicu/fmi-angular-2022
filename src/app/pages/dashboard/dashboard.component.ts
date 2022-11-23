@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,10 +22,24 @@ export class DashboardComponent implements OnInit {
       name: 'Laura',
       age: 10
     }
-  ]
-  constructor() { }
+  ];
+
+  allUsers: any[] = [];
+
+  constructor(private mainService: MainService, private router: Router) { }
 
   ngOnInit(): void {
+    this.getUsers();
+  }
+
+  getUsers() {
+    this.mainService.getAllUsers().subscribe((res) => {
+      this.allUsers = res;
+    })
+  }
+
+  goToUser(id: string) {
+    this.router.navigate(['user/' + id]);
   }
 
   removeUser(index: number) {

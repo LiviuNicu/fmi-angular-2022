@@ -9,19 +9,24 @@ import { RegisterComponent } from './pages/register/register.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { UserTableComponent } from './shared/user-table/user-table.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { UserDetailsComponent } from './pages/user-details/user-details.component'
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    UserTableComponent
+    UserTableComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,3 +2,30 @@
   [allUsers]="users"
   (onRemoveUser)="removeUser($event)"
 ></app-user-table>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of allUsers">
+      <td>
+        {{ user.email }}
+      </td>
+      <td>
+        {{ user.name }}
+      </td>
+      <td>
+        {{ user.phone }}
+      </td>
+      <td>
+        <button class="btn btn-sm" (click)="goToUser(user.id)">Details</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
